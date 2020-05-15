@@ -1,7 +1,17 @@
 h1 Todos List
+
+h2 Add More Todolist
+form(action="/todos/create", method="POST")
+  label TODO
+  br
+  input(type="text" name="todo")
+  button Create
+
+  
+h2 Search
 form(action="/todos", method="GET")
   input(type="text" name="act" value=question)
   button Search
 ul
-  each todo in todos
-    li= todo
+ each todo in todos
+    li= todo.todo
