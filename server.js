@@ -8,11 +8,21 @@ const app = express();
 app.set('view engine', 'pug');
 app.set('views', './views');
 // https://expressjs.com/en/starter/basic-routing.html
+var todos = ["Đi chợ", "Nấu cơm", "Rửa bát", "Học code tại CodersX"];
 app.get('/', (request, response) => {
   response.send('I love CodersX');
 });
+
 app.get('/todos', (request, response) => {
-  response.render('test');
+     
+  var q = request.query.q;
+  var matchTodo = todos.filter(function(job){
+    return job.toLowerCase().indexOf(q.toLowerCase()) !==-1;
+  });
+  response.render('test',{
+       todos:matchTodo
+     });
+   
 });
 
 
