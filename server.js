@@ -5,13 +5,24 @@
 // but feel free to use whatever libraries or frameworks you'd like through `package.json`.
 const express = require('express');
 const app = express();
-
+app.set('view engine', 'pug');
+app.set('views', './views');
 // https://expressjs.com/en/starter/basic-routing.html
+var todos = ["Đi chợ", "Nấu cơm", "Rửa bát", "Học code tại CodersX"];
 app.get('/', (request, response) => {
   response.send('I love CodersX');
 });
+
 app.get('/todos', (request, response) => {
-  response.send('<ul><li>Đi Chợ</li><li>Nấu Cơm</li><li>Rửa Bát</li><li>Học Code Tại CodersX</li></ul>');
+     
+  var q = request.query.q;
+  var matchTodo = todos.filter(function(job){
+    return job.toLowerCase().indexOf(q.toLowerCase()) !==-1;
+  });
+  response.render('test',{
+       todos:matchTodo
+     });
+   
 });
 
 
