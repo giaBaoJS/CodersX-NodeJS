@@ -15,13 +15,21 @@ app.get('/', (request, response) => {
 
 app.get('/todos', (request, response) => {
      
-  var q = request.query.q;
-  var matchTodo = todos.filter(function(job){
+  var q = request.query.act;
+  if(q){
+    var matchTodo = todos.filter(function(job){
     return job.toLowerCase().indexOf(q.toLowerCase()) !==-1;
   });
-  response.render('test',{
-       todos:matchTodo
+  response.render('todos/index',{
+       todos:matchTodo,
+      question: q
      });
+  }
+  else{
+    response.render('todos/index',{
+       todos:todos
+     });
+  }
    
 });
 
