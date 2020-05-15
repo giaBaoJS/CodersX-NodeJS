@@ -1,0 +1,7 @@
+h1 Todos List
+form(action="/todos", method="GET")
+  input(type="text" name="act" value=question)
+  button Search
+ul
+  each todo in todos
+    li= todo
