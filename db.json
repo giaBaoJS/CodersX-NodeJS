@@ -1,23 +1,12 @@
 {
   "todos": [
     {
-      "id": "1",
+      "id": 1,
       "content": "blah"
     },
     {
-      "content": "sasa"
-    },
-    {
-      "content": "as"
-    },
-    {
-      "content": ""
-    },
-    {
-      "content": "asdsad"
-    },
-    {
-      "content": "asdsad"
+      "id": 4,
+      "content": "Thịnh"
     }
   ]
 }

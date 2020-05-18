@@ -14,4 +14,7 @@ form(action="/todos", method="GET")
   button Search
 ul
  each todo in todos
-    li= todo.content
+    li
+      span=todo.content
+      span &nbsp
+      a(href='/todos/'+todo.id+'/delete') Xóa

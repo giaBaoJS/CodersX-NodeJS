@@ -6,10 +6,11 @@
 const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
-const low = require("lowdb");
-const FileSync = require("lowdb/adapters/FileSync");
-const adapter = new FileSync("db.json");
+const low = require('lowdb');
+const FileSync = require('lowdb/adapters/FileSync');
+const adapter = new FileSync('db.json');
 const db = low(adapter);
+
 
 app.use(bodyParser.json()); // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
@@ -23,7 +24,7 @@ app.get("/", (request, response) => {
 app.get("/todos", (request, response) => {
   var q = request.query.act;
   if (q) {
-    var matchTodo = db.get("todos").filter(function(job) {
+    var matchTodo =  db.get('todos').filter(function(job) {
       return job.toLowerCase().indexOf(q.toLowerCase()) !== -1;
     });
     response.render("todos/index", {
@@ -31,19 +32,25 @@ app.get("/todos", (request, response) => {
       question: q
     });
   } else {
+    
     response.render("todos/index", {
-      todos: db.get("todos").value()
+      todos: db.get('todos').value()
     });
   }
 });
 
 app.post("/todos/create", (req, res) => {
-  console.log(req.body);
-  db.get("todos")
-    .push(req.body)
-    .write();
-res.redirect("/todos");
-  
+  db.get('todos').push(req.body).write();
+  res.redirect('/todos');
+
+});
+app.get("/todos/:id/delete", (req, res) => {
+  var id= parseInt(req.params.id);
+  var todos= db.get('todos').find({id :id}).value();
+  var c= db.get('todos').indexOf(todos);
+  db.get('todos').splice(c,1).write();
+  res.redirect('/todos');
+
 });
 
 // listen for requests :)
