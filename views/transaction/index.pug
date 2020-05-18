@@ -1,23 +1,30 @@
-h2 Transaction
-a(href="/") Back
-br
-br
-a(href="/transactions/create" method="post") New Transaction
-
-table(style="width: 100%; table-layout: fixed; text-align:center;")
-  thead
-    tr
-      th ID 
-      th ID User
-      th ID Book
-      th Status
-      th Check
-  tbody
-    each trans in transactions
-      tr
-          td= trans.id
-          td= trans.userID
-          td= trans.bookID
+extends ../layouts/common.pug
+block content
+  div(class="container")
+  
+    h3 List transaction
+    a(class="d-inline-block mb-2", href="/") Back
+    br
+    a(class="d-inline-block mb-2",href="/transactions/create") Create new transaction 
+    table(class="table")
+      thead
+        tr
+          th ID 
+          th Username
+          th Book
+          th Status
+          th Check
+      each trans in transactions
+        tr
+          th= trans.id
+          each user in users
+              if(user.id === trans.userID) 
+                td= user.name
+          break      
+          each book in books
+            if(book.id === trans.bookID) 
+              td= book.title
+          break
           td= trans.status
           td
             a(href='/transactions/'+trans.id+'/complete') Hoàn Thành

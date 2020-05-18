@@ -6,7 +6,9 @@ const books = db.get("books").value();
 
 module.exports.index = (request, response) => {
     response.render("transaction/index", {
-      transactions: db.get('transactions').value()
+      transactions: db.get('transactions').value(),
+      users,
+      books
     });
 };
 
