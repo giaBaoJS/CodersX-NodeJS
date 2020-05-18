@@ -1,0 +1,14 @@
+h1 List Users
+a(href="/") Back
+br
+br
+a(href="/users/create" method="post") New User
+ul
+  each client in user
+    li 
+      span=client.name
+      span &nbsp;
+      a(href=('/users/'+ client.id+'/update')) Update
+      span &nbsp;
+      a(href=('/users/'+ client.id+'/delete')) Delete
+      
