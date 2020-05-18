@@ -10,9 +10,14 @@ table(style="width: 100%; table-layout: fixed; text-align:center;")
       th ID 
       th ID User
       th ID Book
+      th Status
+      th Check
   tbody
     each trans in transactions
       tr
           td= trans.id
           td= trans.userID
           td= trans.bookID
+          td= trans.status
+          td
+            a(href='/transactions/'+trans.id+'/complete') Hoàn Thành
