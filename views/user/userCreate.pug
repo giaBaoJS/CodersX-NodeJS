@@ -1,7 +1,9 @@
-h2 Add User
-form(action="/users/create", method="POST")
-  label Title
-  br
-  input(type="text" name="name" placeholder="Enter Your Name...")
-  br
-  button Create
+extends ../layouts/common.pug
+block content 
+  div(class="container")
+      h3 Add User
+      a(class="d-inline-block mb-2", href="/users") Back
+      form(action="/users/create", method="post")
+        div(class="form-group")
+          input(type="text" name="name" placeholder="Enter Your Name...")
+        button(class="btn btn-primary") Create 

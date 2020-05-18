@@ -1,9 +1,14 @@
-h3 Welcom
-p What are you looking for ?
-ul
-  li 
-    a(href="/books") Books
-  li 
-    a(href="/users") User
-  li 
-    a(href="/transactions") Transaction  
+extends layouts/common.pug
+block content
+ div(class="container-fluid")
+    div(class="row bg-danger")
+      div(class="col-4")
+        h2(class="text-white") Library
+      div(class="col-8")
+        ul(class="nav justify-content-end")
+          li(class="nav-item")
+            a(class="nav-link text-white", href="/books") Books
+          li 
+            a(class="nav-link text-white", href="/users") User
+          li 
+            a(class="nav-link text-white", href="/transactions") Transactions
