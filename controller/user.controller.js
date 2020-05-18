@@ -27,7 +27,6 @@ module.exports.delete = (req, res) => {
 module.exports.getUpdate = (req, res) => {
     var id=req.params.id;
     var IdUser=db.get('users').find({id:id}).value();
-  console.log(IdUser);
     res.render('user/updateUser.pug',{
         user:IdUser
     })
