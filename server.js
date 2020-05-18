@@ -10,6 +10,7 @@ const low = require('lowdb');
 const FileSync = require('lowdb/adapters/FileSync');
 const adapter = new FileSync('db.json');
 const db = low(adapter);
+const shortid = require('shortid')
 
 
 app.use(bodyParser.json()); // for parsing application/json
@@ -18,41 +19,50 @@ app.set("view engine", "pug");
 app.set("views", "./views");
 
 app.get("/", (request, response) => {
-  response.send("I love CodersX");
+  response.send("Hello Mình Là Gia Bảo ! ");
 });
 
-app.get("/todos", (request, response) => {
-  var q = request.query.act;
-  if (q) {
-    var matchTodo =  db.get('todos').filter(function(job) {
-      return job.toLowerCase().indexOf(q.toLowerCase()) !== -1;
+app.get("/books", (request, response) => {
+    response.render("books/index", {
+      books: db.get('books').value()
     });
-    response.render("todos/index", {
-      todos: matchTodo,
-      question: q
-    });
-  } else {
-    
-    response.render("todos/index", {
-      todos: db.get('todos').value()
-    });
-  }
 });
 
-app.post("/todos/create", (req, res) => {
-  db.get('todos').push(req.body).write();
-  res.redirect('/todos');
+app.post("/books/create", (req, res) => {
+  req.body.id=shortid.generate();
+  db.get('books').push(req.body).write();
+  
+  res.redirect('/books');
 
 });
-app.get("/todos/:id/delete", (req, res) => {
-  var id= parseInt(req.params.id);
-  var todos= db.get('todos').find({id :id}).value();
-  var c= db.get('todos').indexOf(todos);
-  db.get('todos').splice(c,1).write();
-  res.redirect('/todos');
+app.get("/books/:id/delete", (req, res) => {
+  var id= req.params.id;
+  var todos= db.get('books').find({id :id}).value();
+  var c= db.get('books').indexOf(todos);
+  db.get('books').splice(c,1).write();
+  res.redirect('/books');
 
 });
 
+app.get('/books/:id/update', (req, res) => {
+    var id=req.params.id;
+    var Idbook=db.get('books').find({id:id}).value();
+  console.log(Idbook);
+    res.render('books/update.pug',{
+        book:Idbook
+    })
+})
+
+app.post("/books/:id/update", (req, res) => {
+  var id= req.params.id;
+  db.get('books')
+        .find({ id:id })
+        .assign(req.body)
+        .write()
+    res.redirect('/books')
+
+
+});
 // listen for requests :)
 app.listen(process.env.PORT, () => {
   console.log("Server listening on port " + process.env.PORT);

@@ -1,0 +1,25 @@
+h1 Library
+
+h2 Add Books
+form(action="/books/create", method="POST")
+  label Title
+  br
+  input(type="text" name="title")
+  br
+  label Descripton
+  br
+  input(type="text" name="descripton")
+  br
+  button Create
+
+br
+h2 All books
+ul
+ each book in books
+    li
+      span=book.title
+      span &nbsp
+      a(href='/books/'+book.id+'/update') Update
+      span &nbsp
+      a(href='/books/'+book.id+'/delete') Xóa
+      
