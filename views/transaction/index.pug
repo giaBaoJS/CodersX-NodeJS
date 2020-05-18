@@ -1,0 +1,18 @@
+h2 Transaction
+a(href="/") Back
+br
+br
+a(href="/transactions/create" method="post") New Transaction
+
+table(style="width: 100%; table-layout: fixed; text-align:center;")
+  thead
+    tr
+      th ID 
+      th ID User
+      th ID Book
+  tbody
+    each trans in transactions
+      tr
+          td= trans.id
+          td= trans.userID
+          td= trans.bookID

@@ -10,6 +10,7 @@ const shortid = require('shortid');
 var db = require('./db');
 var bookRoute = require('./routes/book.route');
 var userRoute = require('./routes/user.route');
+var transactionRoute = require('./routes/transaction.route');
 
 app.use(bodyParser.json()); // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
@@ -21,6 +22,7 @@ app.get("/", (request, res) => {
 });
 app.use('/books',bookRoute);
 app.use('/users',userRoute);
+app.use('/transactions',transactionRoute);
 
 
 // listen for requests :)
