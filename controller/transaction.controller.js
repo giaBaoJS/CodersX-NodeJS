@@ -33,9 +33,8 @@ module.exports.postCreate = (req, res) => {
 module.exports.complete = (req,res) => {
    var id=req.params.id;
     var IdTransaction=db.get('transactions').find({id:id}).value();
-  console.log(IdTransaction.status)
-  if(IdTransaction.status == false){
-    db.get('transactions').find({id:id}).assign(IdTransaction.status=true).write();
+  if(id === IdTransaction.id){
+     db.get('transactions').find({id:id}).assign(IdTransaction.status=true).write();
      res.redirect('/transactions');
   }
 };

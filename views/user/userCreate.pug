@@ -2,8 +2,12 @@ extends ../layouts/common.pug
 block content 
   .container
       h3 Add User
+      if error
+        each err in error
+         .alert.alert-danger= err
       a(class="d-inline-block mb-2", href="/users") Back
       form(action="/users/create", method="post")
         .form-group
-          input(type="text" name="name" placeholder="Enter Your Name...")
+          label(for="name") Name
+          input#name(type="text" name="name" placeholder="Enter Your Name..." value = values ? values.name :" ")
         button.btn.btn-primary Create 
