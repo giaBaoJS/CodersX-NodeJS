@@ -1,9 +1,9 @@
 extends ../layouts/common.pug
 block content 
-   div(class="container")
+   .container
     h3 Update Name
     form(action="/users/"+user.id+"/update" method="POST")
-      div(class="form-group")
-        input(class="form-control", type='text', name='name', id=user.id ,placeholder="New Name")
-      button(class="btn btn-primary") Update
+      .form-group
+        input.form-control(type='text', name='name', id=user.id ,placeholder="New Name")
+      button.btn.btn-primary Update
 

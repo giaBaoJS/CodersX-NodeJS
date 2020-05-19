@@ -1,14 +1,14 @@
 extends layouts/common.pug
 block content
- div(class="container-fluid")
-    div(class="row bg-danger")
-      div(class="col-4")
-        h2(class="text-white") Library
-      div(class="col-8")
-        ul(class="nav justify-content-end")
-          li(class="nav-item")
-            a(class="nav-link text-white", href="/books") Books
+ .container-fluid
+    .row.bg-danger
+      .col-4
+        h2.text-white Library
+      .col-8
+        ul.nav.justify-content-end
+          li.nav-item
+            a.nav-link.text-white(href="/books") Books
           li 
-            a(class="nav-link text-white", href="/users") User
+            a.nav-link.text-white(href="/users") User
           li 
-            a(class="nav-link text-white", href="/transactions") Transactions
+            a.nav-link.text-white(href="/transactions") Transactions

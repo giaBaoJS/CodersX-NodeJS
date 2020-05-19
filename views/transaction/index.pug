@@ -1,12 +1,11 @@
 extends ../layouts/common.pug
 block content
-  div(class="container")
-  
+  .container
     h3 List transaction
     a(class="d-inline-block mb-2", href="/") Back
     br
     a(class="d-inline-block mb-2",href="/transactions/create") Create new transaction 
-    table(class="table")
+    table.table
       thead
         tr
           th ID 

@@ -1,9 +1,9 @@
 extends ../layouts/common.pug
 block content 
-  div(class="container")
+  .container
       h3 Add User
       a(class="d-inline-block mb-2", href="/users") Back
       form(action="/users/create", method="post")
-        div(class="form-group")
+        .form-group
           input(type="text" name="name" placeholder="Enter Your Name...")
-        button(class="btn btn-primary") Create 
+        button.btn.btn-primary Create 
