@@ -7,23 +7,27 @@ const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
 const shortid = require('shortid');
+const cookieParser = require("cookie-parser");
 var db = require('./db');
 var bookRoute = require('./routes/book.route');
 var userRoute = require('./routes/user.route');
 var transactionRoute = require('./routes/transaction.route');
+const validateCookie = require("./validate/cookies.validate.js");
 
 app.use(bodyParser.json()); // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 app.use(express.static("public"));
 app.set("view engine", "pug");
 app.set("views", "./views");
-
-app.get("/", (request, res) => {
-      res.render('index.pug');
+app.use(cookieParser());
+app.get("/", validateCookie.checkCookie, (req, res) => {
+  console.log(`Cookie: ${res.locals.count}`);
+  res.render("index.pug");
 });
 app.use('/books',bookRoute);
 app.use('/users',userRoute);
 app.use('/transactions',transactionRoute);
+
 
 
 // listen for requests :)
