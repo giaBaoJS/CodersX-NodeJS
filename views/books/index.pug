@@ -1,13 +1,11 @@
 extends ../layouts/common.pug
 block content 
-  div(class="container")
+  .container
     h3 Books
-
     a(class="d-inline-block mb-2", href="/") Back
-
-    ul(class="list-group")
+    ul.list-group
       a(class="list-group-item", href="/books/create") Create a new book 
-    table(class="table")
+    table.table
       thead
         tr
           th ID 
