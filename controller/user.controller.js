@@ -11,9 +11,14 @@ module.exports.create = (req,res)=>{
 }
 
 module.exports.postCreate = (req, res) => {
-  
   req.body.id=shortid.generate();
-  db.get('users').push(req.body).write();
+  var pass="123123";
+  var isAdmin = 0;
+  var id = req.body.id;
+  var name =req.body.name;
+  var email= req.body.email;
+  var u = {id,name,pass,email,isAdmin};
+  db.get('users').push(u).write();
   res.redirect('/users');
 };
 

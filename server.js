@@ -9,10 +9,16 @@ const bodyParser = require("body-parser");
 const shortid = require('shortid');
 const cookieParser = require("cookie-parser");
 var db = require('./db');
+
 var bookRoute = require('./routes/book.route');
 var userRoute = require('./routes/user.route');
 var transactionRoute = require('./routes/transaction.route');
+
+var authMiddleware = require('./middleware/auth.middleware');
+
+
 const validateCookie = require("./validate/cookies.validate.js");
+var authRoute = require('./routes/auth.route');
 
 app.use(bodyParser.json()); // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
@@ -20,14 +26,17 @@ app.use(express.static("public"));
 app.set("view engine", "pug");
 app.set("views", "./views");
 app.use(cookieParser());
-app.get("/", validateCookie.checkCookie, (req, res) => {
-  console.log(`Cookie: ${res.locals.count}`);
-  res.render("index.pug");
+app.get("/", authMiddleware.requireAuth, (req, res) => {
+  if(res.locals.isAdmin==0){
+    res.redirect('/transactions');
+  }else{
+    res.redirect('/books');
+  }
 });
-app.use('/books',bookRoute);
-app.use('/users',userRoute);
-app.use('/transactions',transactionRoute);
-
+app.use('/books',authMiddleware.requireAuth,authMiddleware.checkAdmin,bookRoute);
+app.use('/users',authMiddleware.requireAuth,authMiddleware.checkAdmin,userRoute);
+app.use('/transactions',authMiddleware.requireAuth,transactionRoute);
+app.use('/auth',authRoute);
 
 
 // listen for requests :)
