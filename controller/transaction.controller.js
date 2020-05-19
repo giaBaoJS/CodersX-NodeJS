@@ -4,9 +4,9 @@ const transactions = db.get("transactions").value();
 const users = db.get("users").value();
 const books = db.get("books").value();
 
-module.exports.index = (request, response) => {
+module.exports.index = (req, response) => {
     response.render("transaction/index", {
-      transactions: db.get('transactions').value(),
+      transactions: db.get('transactions').value().filter(check=>check.userID === req.cookies.userID),
       users,
       books
     });

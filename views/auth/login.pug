@@ -1,18 +1,17 @@
-extends layouts/common.pug
-block content
-    .container
+extends ../layouts/common.pug
+block content 
+  .container
       h3 Login
       if error
         each err in error
          .alert.alert-danger= err
       form(action="/auth/login", method="post")
         .form-group
-          
+    
           input#email.form-control(type="text" name="email" placeholder="Email" value = values ? values.email :"")
   
   
         .form-group
-          
-          input#password.form-control(type="password" name="password" placeholder="Email" value = values ? values.password :"")
+     
+          input#password.form-control(type="password" name="password" placeholder="Password" value = values ? values.password :"")
         button.btn.btn-primary Login
-         

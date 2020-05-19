@@ -9,5 +9,8 @@ block content
       form(action="/users/create", method="post")
         .form-group
           label(for="name") Name
-          input#name(type="text" name="name" placeholder="Enter Your Name..." value = values ? values.name :" ")
+          input#name.form-control(type="text" name="name" placeholder="Enter Your Name..." value = values ? values.name :"")
+          form-group
+          label(for="email") Email
+          input#email.form-control(type="text" name="email" placeholder="Enter Your Email..." value = values ? values.email :"")
         button.btn.btn-primary Create 

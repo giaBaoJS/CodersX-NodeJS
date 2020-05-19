@@ -13,12 +13,18 @@
   ],
   "users": [
     {
-      "id": "ZSCWZSS",
-      "name": "Phước ngu"
+      "id": "ZSCAAVV",
+      "name": "Bảo",
+      "email": "bao@gmail.com",
+      "password" : "123123",
+      "isAdmin":1
     },
     {
       "name": "Phúc",
-      "id": "Ko7W4G8Of"
+      "id": "Ko7W4G8",
+      "email": "phuc@gmail.com",
+      "password" : "123123",
+      "isAdmin":0
     },
     {
       "name": "asd",
@@ -27,40 +33,17 @@
   ],
   "transactions": [
     {
-      "id": "ASDWWW",
-      "userID": "ZSCWZSS",
-      "bookID": "v49KcMDS1",
-      "status": true
-    },
-    {
-      "id": "d7uunq9ra",
-      "userID": "gzi3a-vsa",
+      "id": "ZSCAAX",
+      "userID": "Ko7W4G8",
       "bookID": "asdasd",
       "status": true
     },
     {
-      "id": "bdPnHEbuQ",
-      "userID": "Ko7W4G8Of",
-      "bookID": "v49KcMDS1",
-      "status": true
-    },
-    {
-      "id": "vx78Lpj9V",
-      "userID": "Ko7W4G8Of",
-      "bookID": "awQUPxip0",
-      "status": true
-    },
-    {
-      "id": "a87iyRzTL",
-      "userID": "Ko7W4G8Of",
-      "bookID": "awQUPxip0",
-      "status": true
-    },
-    {
-      "id": "JlrWxKmNO",
-      "userID": "Ko7W4G8Of",
+      "id": "d7uunq9ra",
+      "userID": "Ko7W4G8",
       "bookID": "awQUPxip0",
       "status": true
     }
+   
   ]
 }
