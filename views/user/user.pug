@@ -1,6 +1,6 @@
 extends ../layouts/common.pug
 block content 
-  div(class="container")
+  .container
     h3 List Users
 
     a.d-inline-block.mb-2(href="/") Back
@@ -10,12 +10,15 @@ block content
     table.table
       thead
         tr
+          th Avatar
           th ID 
           th Name
           th
       tbody
       each client in user
           tr
+              th
+               img(src=client.avatar, width="50", heigth="50")
               th= client.id
               td= client.name
               td

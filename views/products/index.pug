@@ -1,0 +1,28 @@
+extends ../layouts/common.pug
+block content 
+ .container
+   h3 Product
+   div
+     a.d-inline-block.mb-2(href="/") Back  
+     .row
+        each pro in products
+          .card.m-3(style="width: 15rem; margin-top:2rem")
+            img.card-img-top(src="https://loremflickr.com/160/120")
+            .card-body
+              h5.card-title Card title
+              p.card-text Some quick example text to build on the card title and make up the bulk of the card's content.
+              a.btn.btn-primary(style='color:white') Add Cart
+   nav
+    .pagination
+      li.page-item.disabled
+        a.page-link(href="#" tabindex="-1" aria-disabled="true") Previous
+      li.page-item.active 
+        a.page-link(href="/products/?page="+prevPage) 1
+      li.page-item(aria-current="page")
+        a.page-link(href="/products/?page="+page) 2 
+        span.sr-only
+      li.page-item
+        a.page-link(href="/products/?page="+nextPage) 3
+      li.page-item
+        a.page-link(href="#") Next
+

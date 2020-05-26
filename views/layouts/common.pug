@@ -6,9 +6,9 @@ html
 body
  .container-fluid
     .row.bg-danger
-      .col-4
+      .col-1
         h2.text-white Library
-      .col-8
+      .col-11
         ul.nav.justify-content-end
           li.nav-item
             a.nav-link.text-white(href="/books") Books
@@ -16,6 +16,16 @@ body
             a.nav-link.text-white(href="/users") User
           li 
             a.nav-link.text-white(href="/transactions") Transactions
+          li
+          li 
+            a.nav-link.text-white(href="/products") Products
+          li 
+            a.nav-link.text-white(href="/auth/logout") Logout
+          li 
+            a.nav-link.text-white(href="/cart") Cart
+          li 
+          if user
+            p=user.name
     .containter
       .pt-3
         block content  
