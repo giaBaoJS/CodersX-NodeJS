@@ -8,6 +8,7 @@ block content
     table.table
       thead
         tr
+          th Cover
           th ID 
           th Title
           th Description
@@ -15,12 +16,17 @@ block content
       tbody
         each book in books
           tr
+              th
+               img(src=book.coverUrl, width="50", heigth="50")
               th= book.id
               td= book.title
               td= book.description
               td
-                span &nbsp;
-                a(href=`/books/${book.id}/delete`) Delete
-                span 
-                a(href=`/books/${book.id}/update`) Update 
+                a.text-success(href=`/cart/add/${book.id}`) Add to cart
+                br
+                if (user && user.isAdmin)
+                  a.text-danger(href=`/books/${book.id}/delete`) Delete
+                  span &nbsp;
+                  a(href=`/books/${book.id}/update`) Update
+
 

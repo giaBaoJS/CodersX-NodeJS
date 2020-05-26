@@ -6,11 +6,15 @@ block content
         each err in error
          .alert.alert-danger= err
       a(class="d-inline-block mb-2", href="/users") Back
-      form(action="/users/create", method="post")
+      form(action="/users/create", method="post", enctype="multipart/form-data")
         .form-group
           label(for="name") Name
           input#name.form-control(type="text" name="name" placeholder="Enter Your Name..." value = values ? values.name :"")
-          form-group
+        .form-group
           label(for="email") Email
           input#email.form-control(type="text" name="email" placeholder="Enter Your Email..." value = values ? values.email :"")
+        .form-group
+          label(for="avatar") Avatar
+          input#avatar.form-control-file(type="file" name="avatar")  
+          
         button.btn.btn-primary Create 
