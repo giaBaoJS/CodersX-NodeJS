@@ -34,13 +34,10 @@ app.use(authMiddleware.checkSession);
 
 
 //Trang chủ mặc định
-app.get("/", authMiddleware.requireAuth, (req, res) => {
-  if(res.locals.isAdmin==0){
-    res.redirect('/transactions');
-  }else{
+app.get("/",  (req, res) => {
     res.redirect('/books');
   }
-});
+);
 
 //Sử dụng Use để set các request route và xét điều kiện
 app.use('/books',bookRoute);

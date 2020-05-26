@@ -2,7 +2,7 @@
   "books": [
     {
       "id": "asdasd",
-      "title": "óc chó phước",
+      "title": "phước đẹp trai",
       "description": "Chuyến đi dài",
       "coverUrl": "https://res.cloudinary.com/giabao/image/upload/v1590220481/2cfc93d7665f5d7728782700e50596e3_tbunmg.png"
     },
@@ -294,10 +294,6 @@
     },
     {
       "id": "6xrgSQC4q",
-      "cart": {}
-    },
-    {
-      "id": "SG5YYAQyE",
       "cart": {}
     }
   ]
